@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: fct_orders
+    description: "Fact table for orders"
+    columns:
+      - name: od_id
+        tests:
+          - unique
+          - not_null
+      - name: cust_id
+        tests:
+          - not_null
+      - name: order_year
+      - name: total_amount
+
+  - name: fct_order_revenue
+    description: "Fact table for order revenue"
+    columns:
+      - name: od_id
+        tests:
+          - not_null
+      - name: total_revenue
+        tests:
+          - not_null
+          - total_revenue
+
+  - name: dim_customers
+    description: "Dimension table for customers"
+    columns:
+      - name: cust_id
+        tests:
+          - not_null
+      - name: customer_full_name
+      - name: email
+      - name: created_at

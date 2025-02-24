@@ -1,0 +1,36 @@
+version: 2
+
+sources:
+  - name: MYSCHEMA
+    database: MYDATABASE   # Replace with your actual Snowflake DB name
+    schema: MYSCHEMA
+    tables:
+      - name: customers
+        description: "Raw customer data from source system"
+        columns:
+          - name: customer_id
+            tests:
+              - unique
+              - not_null
+      - name: orders
+        description: "Raw orders data from source system"
+        columns:
+          - name: order_id
+            tests:
+              - unique
+              - not_null
+          - name: total_amount  
+      - name: order_items
+        description: "Raw order line items data"
+        columns:
+          - name: order_item_id
+            tests:
+              - unique
+              - not_null
+      - name: products
+        description: "Product catalog data"
+        columns:
+          - name: product_id
+            tests:
+              - unique
+              - not_null
